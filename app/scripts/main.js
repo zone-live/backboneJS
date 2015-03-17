@@ -2,8 +2,27 @@ $.ajaxPrefilter(function( options ) {
     options.url = 'http://backbone-beginner.herokuapp.com' + options.url;
 });
 
+$.fn.serializeObject = function() {
+   var o = {};
+   var a = this.serializeArray();
+   $.each(a, function() {
+       if (o[this.name]) {
+           if (!o[this.name].push) {
+               o[this.name] = [o[this.name]];
+           }
+           o[this.name].push(this.value || '');
+       } else {
+           o[this.name] = this.value || '';
+       }
+   });
+   return o;
+};
+
 var Users = Backbone.Collection.extend({
 	url: '/users'
+});
+var User = Backbone.Model.extend({
+	urlRoot: '/users'
 });
 
 var UserList = Backbone.View.extend({
@@ -31,13 +50,31 @@ var EditUser = Backbone.View.extend({
 		var template = _.template($('#edit-list-template').html());
 		this.$el.html(template); 
 
+	},
+	events: {
+		'submit .edit-user-form': 'saveUser' 
+	},
+	saveUser: function(event) {
+		var userDetails = $(event.currentTarget).serializeObject();
+		var user = new User();
+		console.log(userDetails);
+
+		user.save(userDetails, {
+			success: function(user) {
+				router.navigate('', {trigger: true});
+			},
+			error: function() {
+				alert('ERROR!');
+			}
+		})
+		return false;
 	}
 });
 
 var Router = Backbone.Router.extend({
 	routes: {
-		'': 'home',
-		'new': 'editUser'
+		''		: 'home',
+		'new'	: 'editUser'
 	}
 });
 
