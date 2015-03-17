@@ -1,3 +1,11 @@
+function htmlEncode(value){
+	return $('<div/>').text(value).html();
+}
+
+function htmlDecode(value){
+	return $('<div/>').html(value).text();
+}
+
 $.ajaxPrefilter(function( options ) {
     options.url = 'http://backbone-beginner.herokuapp.com' + options.url;
 });
@@ -31,11 +39,11 @@ var UserList = Backbone.View.extend({
 		var that = this;
 		var users = new Users();
 		users.fetch({
-			success: function(users) {
+			success: function() {
 
 				var template = _.template($('#user-list-template').html());
 				that.$el.html(template({
-				   users: users.models // users.toJSON()
+				   users: users
 				})); 
 
 			}
@@ -45,19 +53,32 @@ var UserList = Backbone.View.extend({
 
 var EditUser = Backbone.View.extend({
 	el: '.page',
-	render: function () {
-
-		var template = _.template($('#edit-list-template').html());
-		this.$el.html(template); 
-
+	render: function (options) {
+		var that = this;
+		if (options.id) {
+			that.user = new User({id: options.id});
+			that.user.fetch({
+				success: function() {
+					var template = _.template($('#edit-user-template').html());
+					that.$el.html(template({
+					   user: that.user
+					}));
+				}
+			});
+		} else {
+			var template = _.template($('#edit-user-template').html());
+			this.$el.html(template({
+			   user: null
+			})); 
+		}
 	},
 	events: {
-		'submit .edit-user-form': 'saveUser' 
+		'submit .edit-user-form': 'saveUser',
+		'click .delete': 'deleteUser'
 	},
 	saveUser: function(event) {
 		var userDetails = $(event.currentTarget).serializeObject();
 		var user = new User();
-		console.log(userDetails);
 
 		user.save(userDetails, {
 			success: function(user) {
@@ -68,13 +89,28 @@ var EditUser = Backbone.View.extend({
 			}
 		})
 		return false;
+	},
+	deleteUser: function(event) {
+		this.user.destroy({
+			success: function() {
+				router.navigate('', {trigger: true});
+			}
+		});
+		return false;
 	}
 });
 
 var Router = Backbone.Router.extend({
 	routes: {
 		''		: 'home',
-		'new'	: 'editUser'
+		'new'	: 'editUser',
+		'edit/:id': 'editUser'
+	},
+	home: function() {
+		userList.render();
+	},
+	editUser: function(id) {
+		editUser.render({id: id});
 	}
 });
 
@@ -82,12 +118,5 @@ var userList = new UserList();
 var editUser = new EditUser();
 
 var router = new Router();
-router.on('route:home', function() {
-	userList.render();
-});
-
-router.on('route:editUser', function() {
-	editUser.render();
-});
 
 Backbone.history.start();
