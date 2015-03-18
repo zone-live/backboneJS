@@ -53,6 +53,7 @@ var UserList = Backbone.View.extend({
 
 var EditUser = Backbone.View.extend({
 	el: '.page',
+
 	render: function (options) {
 		var that = this;
 		if (options.id) {
@@ -94,6 +95,9 @@ var EditUser = Backbone.View.extend({
 		this.user.destroy({
 			success: function() {
 				router.navigate('', {trigger: true});
+			},
+			error: function() {
+				alert('ERROR!');
 			}
 		});
 		return false;
