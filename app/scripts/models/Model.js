@@ -7,13 +7,15 @@ define(["jquery", "backbone"],
             initialize: function() {
                 console.log('Model initiated');
             },
-
-
-            // urlRoot: '/users?page=2',
-            // getUsers: function() {
-            //     return this.get('data');
-            // },
-            
+            getFirstName: function() {
+                return this.get('firstname');
+            },
+            getLastName: function() {
+                return this.get('lastname');
+            },
+            getAge: function() {
+                return this.get('age');
+            },
             urlRoot: '/users',
             // Gets called automatically by Backbone when the set and/or save methods are called (Add your own logic)
             validate: function(attrs) {

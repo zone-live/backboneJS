@@ -12,23 +12,12 @@
         <tbody>
         <% users.each(function(user) { %>
             <tr>
-                <td><%- user.get('firstname') %></td>
-                <td><%- user.get('lastname') %></td>
-                <td><%- user.get('age') %></td>
+                <td><%- user.getFirstName() %></td>
+                <td><%- user.getLastName() %></td>
+                <td><%- user.getAge() %></td>
                 <td><a href="#/edit/<%- user.id %>" class="btn btn-default">Edit</a></td>
             </tr>
          <% }) %>
         </tbody>
     </table>
 </section>
-
-
-
-<!-- <tbody>
- _.each(user.getUsers(), function(superUser) { %>
-    <tr>
-        <td>- superUser.first_name %></td>
-        <td>- superUser.last_name %></td> 
-    </tr>
-  }) %>
-</tbody> -->

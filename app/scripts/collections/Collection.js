@@ -1,8 +1,9 @@
 define(["jquery","backbone","models/Model"],
 
-  function($, Backbone, Model) {
+  function($, Backbone, User) {
 
 	var Users = Backbone.Collection.extend({
+		model: User,
         initialize: function() {
             console.log('Collection initialized');
         },

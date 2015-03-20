@@ -1,6 +1,6 @@
-define(["jquery", "backbone", "models/Model", "text!templates/view_userForm.html"],
+define(["jquery", "backbone", "routers/Router", "models/Model", "text!templates/view_userForm.html"],
 
-    function($, Backbone, Model, template){
+    function($, Backbone, Router, User, template){
 
         var EditUser = Backbone.View.extend({
 
@@ -10,7 +10,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/view_userForm.html
             initialize: function() {
                 console.log('View UserEdit initialized');
                 // Calls the view's render method
-                this.render();
+                //this.render();
 
             },
             // View Event Handlers
@@ -24,15 +24,16 @@ define(["jquery", "backbone", "models/Model", "text!templates/view_userForm.html
                     that.user = new User({id: options.id});
                     that.user.fetch({
                         success: function() {
-                            var template = _.template(template, {});
-                            that.$el.html(template({
+                            var templateEditUser = _.template(template, {});
+                            that.$el.html(templateEditUser({
                                user: that.user
                             }));
                         }
                     });
                 } else {
-                    var template = _.template(template, {});
-                    this.$el.html(template({
+
+                    var templateNEW = _.template(template, {});
+                    that.$el.html(templateNEW({
                        user: null
                     })); 
                 }
@@ -43,7 +44,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/view_userForm.html
 
                 user.save(userDetails, {
                     success: function(user) {
-                        router.navigate('', {trigger: true});
+                        Backbone.history.navigate('', {trigger: true});
                     },
                     error: function() {
                         alert('ERROR!');
@@ -54,7 +55,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/view_userForm.html
             deleteUser: function(event) {
                 this.user.destroy({
                     success: function() {
-                        router.navigate('', {trigger: true});
+                        Backbone.history.navigate('', {trigger: true});
                     },
                     error: function() {
                         alert('ERROR!');
@@ -70,5 +71,3 @@ define(["jquery", "backbone", "models/Model", "text!templates/view_userForm.html
     }
 
 );
-
-// var editUser = new EditUser();

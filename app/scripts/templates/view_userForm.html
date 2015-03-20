@@ -3,11 +3,11 @@
     <form class="edit-user-form">
         <legend><%- user ? 'Update' : 'Create' %> user</legend>
         <label>First Name</label>
-        <input class="form-control" type="text" name="firstname" value="<%- user ? user.get('firstname') : '' %>" />   
+        <input class="form-control" type="text" name="firstname" value="<%- user ? user.getFirstName() : '' %>" />   
         <label>Last Name</label>
-        <input class="form-control" type="text" name="lastname" value="<%- user ? user.get('lastname') : '' %>" />   
+        <input class="form-control" type="text" name="lastname" value="<%- user ? user.getLastName() : '' %>" />   
         <label>Age</label>
-        <input class="form-control" type="text" name="age" value="<%- user ? user.get('age') : '' %>" />
+        <input class="form-control" type="text" name="age" value="<%- user ? user.getAge() : '' %>" />
         <hr>
         <button type="submit" class="btn"><%- user ? 'Update' : 'Create' %> User</button>
         <% if(user) { %>
