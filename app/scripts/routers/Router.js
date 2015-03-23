@@ -1,6 +1,6 @@
-define(["jquery", "backbone", "models/Model", "collections/Collection" ],
+define(["jquery", "backbone", "backbone-controller", "models/Model", "collections/Collection", "controllers/mainController" ],
 
-    function($, Backbone, User, Users) {
+    function($, Backbone, BackboneController, User, Users, mainController) {
 
         var Router = Backbone.Router.extend({
 
@@ -14,33 +14,17 @@ define(["jquery", "backbone", "models/Model", "collections/Collection" ],
                 'new'   : 'editUser',
                 'edit/:id': 'editUser'
             },
-            checkCurrentView: function(view) {
-                if (this.currentView) {
-
-                    console.log('ENTROU NA currentView');
-
-                    this.currentView.$el.empty();
-                    this.currentView.stopListening();
-                    this.currentView.unbind();
-                    this.currentView.remove();
-                }
-                this.currentView = view;
-                console.log(view);
-                $('.page').html(view.render().el);
-
-                return this;
-            },
             home: function() {
                 //require one time the view in each router function
-                var that = this;
+                // var that = this;
                 require(["views/View-user-list"], function(UserList) {
-                    that.checkCurrentView(new UserList());
+                    mainController.checkCurrentView(new UserList());
                 });
             },
             editUser: function(id) {
-                var that = this;
+                // var that = this;
                 require(["views/View-user-edit"], function(EditUser) {
-                    that.checkCurrentView(new EditUser({id:id}));
+                    mainController.checkCurrentView(new EditUser({id:id}));
                 });
             }
 
