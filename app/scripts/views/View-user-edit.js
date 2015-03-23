@@ -5,13 +5,15 @@ define(["jquery", "backbone", "routers/Router", "models/Model", "text!templates/
         var EditUser = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: ".page",
+           // el: ".page",
+           tagName: 'section',
+
             // View constructor
-            initialize: function() {
+            initialize: function(options) {
                 console.log('View UserEdit initialized');
                 // Calls the view's render method
                 //this.render();
-
+                this._id = options.id;
             },
             // View Event Handlers
             events: {
@@ -20,7 +22,7 @@ define(["jquery", "backbone", "routers/Router", "models/Model", "text!templates/
             },
             render: function (options) {
                 var that = this;
-                if (options.id) {
+                if (this._id) {
                     that.user = new User({id: options.id});
                     that.user.fetch({
                         success: function() {
@@ -37,13 +39,15 @@ define(["jquery", "backbone", "routers/Router", "models/Model", "text!templates/
                        user: null
                     })); 
                 }
+                return this;
             },
             saveUser: function(event) {
                 var userDetails = $(event.currentTarget).serializeObject();
-                var user = new User();
+                var user = new User(userDetails);
 
-                user.save(userDetails, {
-                    success: function(user) {
+                user.save(null, {
+                    success: function() {
+                        console.log('success');
                         Backbone.history.navigate('', {trigger: true});
                     },
                     error: function() {

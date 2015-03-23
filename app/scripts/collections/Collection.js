@@ -9,7 +9,7 @@ define(["jquery","backbone","models/Model"],
         },
 		url: '/users'
 	});
-
+	
 	//var users = new Users();
     // Returns the Model class
     return Users;

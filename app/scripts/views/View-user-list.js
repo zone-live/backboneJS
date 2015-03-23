@@ -3,7 +3,9 @@ define(["jquery", "backbone", "models/Model", "collections/Collection", "text!te
     function($, Backbone, User, Users, template){
 
         var UserList = Backbone.View.extend({
-            el: '.page',
+            //el: '.page',
+
+            tagName: 'section',
 
             // View constructor
             initialize: function() {
@@ -31,6 +33,7 @@ define(["jquery", "backbone", "models/Model", "collections/Collection", "text!te
                         return that;
                     }
                 });
+                return this;
             }
         });
         
