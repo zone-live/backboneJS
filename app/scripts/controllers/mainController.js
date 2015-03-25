@@ -2,7 +2,7 @@ define(["jquery", "backbone", "backbone-controller"],
 
     function($, Backbone, User, BackboneController) {
 
-        var mainController = Backbone.Controller.extend({
+        var MainController = Backbone.Controller.extend({
             initialize: function() {
                 console.log('mainController initialized');
             },
@@ -28,9 +28,9 @@ define(["jquery", "backbone", "backbone-controller"],
             // }
         }); 
 
-        //var mainController = new Controller();
+        //var mainController = new MainController();
         // Returns the Model class
-        return mainController;
+        return MainController;
 
     }
 

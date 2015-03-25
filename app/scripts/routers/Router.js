@@ -1,6 +1,6 @@
 define(["jquery", "backbone", "backbone-controller", "models/Model", "collections/Collection", "controllers/mainController" ],
 
-    function($, Backbone, BackboneController, User, Users, mainController) {
+    function($, Backbone, BackboneController, User, Users, MainController) {
 
         var Router = Backbone.Router.extend({
 
@@ -15,6 +15,7 @@ define(["jquery", "backbone", "backbone-controller", "models/Model", "collection
                 'edit/:id': 'editUser'
             },
             home: function() {
+                var mainController = new MainController();
                 //require one time the view in each router function
                 // var that = this;
                 require(["views/View-user-list"], function(UserList) {
@@ -22,6 +23,7 @@ define(["jquery", "backbone", "backbone-controller", "models/Model", "collection
                 });
             },
             editUser: function(id) {
+                var mainController = new MainController();
                 // var that = this;
                 require(["views/View-user-edit"], function(EditUser) {
                     mainController.checkCurrentView(new EditUser({id:id}));
