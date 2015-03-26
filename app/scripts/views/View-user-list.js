@@ -43,5 +43,3 @@ define(["jquery", "backbone", "models/Model", "collections/Collection", "text!te
     }
 
 );
-
-// var userList = new UserList();

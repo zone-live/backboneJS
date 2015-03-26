@@ -23,9 +23,6 @@ define(["jquery", "backbone", "backbone-controller"],
                 return this;
             },
 
-            // search: function(query, page) {
-            // // create search model and view
-            // }
         }); 
 
         //var mainController = new MainController();
