@@ -15,6 +15,20 @@
 				assert(foobar.sayHello() === 'funky chicken', 'Was expecting "Hello World!"');
 			});
 		});
+
+		describe('#sumCalc()', function() {
+			it('should return the calc z = x + y', function() {
+				var foobar = {
+					sumCalc: function() {
+						var x = 5, y = 2, z = x + y;
+						return z;
+					}
+				};
+
+				assert(foobar.sumCalc() === 7, 'Was expecting 7');
+			});
+		});
+
 	});
 
 
