@@ -15,6 +15,7 @@ var initCoolDependencies = function() {
 	    options.url = 'http://backbone-beginner.herokuapp.com' + options.url;
 	});
 
+	//serialize form to JSON for POST request 
 	$.fn.serializeObject = function() {
 	   var o = {};
 	   var a = this.serializeArray();
@@ -38,6 +39,7 @@ define(["jquery", "backbone", "backbone-controller", "routers/Router", "controll
 
 	function($, Backbone, BackboneController, Router, Controller) {
   	
+  		//init dependencies function
 	  	initCoolDependencies();
 	    // Instantiates a new Router instance
 	    new Router();
