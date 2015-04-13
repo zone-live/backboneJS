@@ -54,7 +54,7 @@ define(["jquery", "backbone", "routers/Router", "models/Model", "text!templates/
                         Backbone.history.navigate('', {trigger: true});
                     },
                     error: function() {
-                        alert('ERROR!');
+                        console.log('ERROR');
                     }
                 })
                 return false;
@@ -66,7 +66,7 @@ define(["jquery", "backbone", "routers/Router", "models/Model", "text!templates/
                         Backbone.history.navigate('', {trigger: true});
                     },
                     error: function() {
-                        alert('ERROR!');
+                        console.log('ERROR');
                     }
                 });
                 return false;
