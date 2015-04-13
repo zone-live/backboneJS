@@ -16,9 +16,7 @@ define(["jquery", "backbone", "models/Model", "collections/Collection", "text!te
                 //this.render();
             },
             // View Event Handlers
-            events: {
-
-            },
+            events: { },
             render: function () {
                 var that = this;
                 var users = new Users();

@@ -1,13 +1,25 @@
 /* global describe, it */
 
-(function () {
-  'use strict';
+(function () { 'use strict';
 
-  describe('Give it some context', function () {
-    describe('maybe a bit more context here', function () {
-      it('should run here few assertions', function () {
+	//mocha test example
+	describe('Foobar', function() {  
+		describe('#sayHello()', function() {
+			it('should return some text', function() {
+				var foobar = {
+					sayHello: function() {
+						return 'Hello World!';
+					}
+				};
 
-      });
-    });
-  });
+				assert(foobar.sayHello() === 'funky chicken', 'Was expecting "Hello World!"');
+			});
+		});
+	});
+
+
 })();
+
+
+
+
