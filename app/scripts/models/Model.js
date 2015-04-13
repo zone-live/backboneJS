@@ -2,6 +2,7 @@ define(["jquery", "backbone"],
 
     function($, Backbone) {
 
+        // Modelo User, trata de GETs para toda a data relativa ao utilizador
         var User = Backbone.Model.extend({
             // Model Constructor
             initialize: function() {
@@ -18,9 +19,7 @@ define(["jquery", "backbone"],
             },
             urlRoot: '/users',
             // Gets called automatically by Backbone when the set and/or save methods are called (Add your own logic)
-            validate: function(attrs) {
-
-            }
+            validate: function(attrs) {}
         });
 
         //var user = new User();
