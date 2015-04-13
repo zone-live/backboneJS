@@ -12,8 +12,9 @@
 					}
 				};
 
-				assert(foobar.sayHello() === 'funky chicken', 'Was expecting "Hello World!"');
+				assert(foobar.sayHello() === 'Hello World!', 'Was expecting "Hello World!"');
 			});
+
 		});
 
 		describe('#sumCalc()', function() {
