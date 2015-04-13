@@ -2,6 +2,7 @@ define(["jquery", "backbone", "backbone-controller", "models/Model", "collection
 
     function($, Backbone, BackboneController, User, Users, MainController) {
 
+        // Router com as várias páginas e respetivas funçoes listadas
         var Router = Backbone.Router.extend({
 
             initialize: function() {
@@ -15,6 +16,8 @@ define(["jquery", "backbone", "backbone-controller", "models/Model", "collection
                 'edit/:id': 'editUser'
             },
             home: function() {
+                //função HOME chama o MainController e depois pede a vista
+                // através do requireJS
                 var mainController = new MainController();
                 //require one time the view in each router function
                 // var that = this;
