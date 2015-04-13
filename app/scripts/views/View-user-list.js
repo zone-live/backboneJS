@@ -2,6 +2,8 @@ define(["jquery", "backbone", "models/Model", "collections/Collection", "text!te
 
     function($, Backbone, User, Users, template){
 
+        // Vista da Lista de utilizadores, so contém a função render
+        // que usa o template: "text!templates/view_list.html" e a data do modelo
         var UserList = Backbone.View.extend({
             //el: '.page',
 

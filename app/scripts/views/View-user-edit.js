@@ -2,6 +2,8 @@ define(["jquery", "backbone", "routers/Router", "models/Model", "text!templates/
 
     function($, Backbone, Router, User, template){
 
+        // Vista de edição do utilizador, contém a função render, saveUser e deleteUser.
+        // Usa o template: "text!templates/view_userForm.html" e a data do modelo
         var EditUser = Backbone.View.extend({
 
             // The DOM Element associated with this view
@@ -41,6 +43,7 @@ define(["jquery", "backbone", "routers/Router", "models/Model", "text!templates/
                 }
                 return this;
             },
+            // Função de SAVE user
             saveUser: function(event) {
                 var userDetails = $(event.currentTarget).serializeObject();
                 var user = new User(userDetails);
@@ -56,6 +59,7 @@ define(["jquery", "backbone", "routers/Router", "models/Model", "text!templates/
                 })
                 return false;
             },
+            // Função de DELETE user
             deleteUser: function(event) {
                 this.user.destroy({
                     success: function() {
