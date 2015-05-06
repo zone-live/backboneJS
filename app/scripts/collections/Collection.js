@@ -14,6 +14,4 @@ define(["jquery","backbone","models/Model"],
     // Returns the Model class
     return Users;
 
-  }
-
-);
+});

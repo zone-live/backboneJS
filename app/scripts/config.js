@@ -20,23 +20,6 @@ require.config({
   }//,
 
   // Sets the configuration for your third party scripts that are not AMD compatible
-  // shim: {
-
-  //     // jQuery Mobile
-  //     "jquerymobile": ["jquery"],
-
-  //     // Twitter Bootstrap jQuery plugins
-  //     "bootstrap": ["jquery"],
-
-  //     // jQueryUI
-  //     "jqueryui": ["jquery"],
-
-  //     // Backbone.validateAll plugin that depends on Backbone
-  //     "backbone.validateAll": ["backbone"],
-
-  //     // Jasmine-jQuery plugin
-  //     "jasminejquery": ["jquery"]
-
-  // }
+  // shim: {}
 
 });
