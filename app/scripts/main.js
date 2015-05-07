@@ -35,9 +35,9 @@ var initCoolDependencies = function() {
 }
 
 // Includes Desktop Specific JavaScript files here (or inside of your Desktop router)
-define(["jquery", "backbone", "backbone-controller", "routers/Router", "controllers/mainController"],
+define(["jquery", "backbone", "routers/Router", "controllers/mainController"],
 
-	function($, Backbone, BackboneController, Router, Controller) {
+	function($, Backbone, Router, Controller) {
   	
   		//init dependencies function
 	  	initCoolDependencies();

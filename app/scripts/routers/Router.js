@@ -1,6 +1,6 @@
-define(["jquery", "backbone", "backbone-controller", "models/Model", "collections/Collection", "controllers/mainController" ],
+define(["jquery", "backbone", "models/Model", "collections/Collection", "controllers/mainController" ],
 
-    function($, Backbone, BackboneController, User, Users, MainController) {
+    function($, Backbone, User, Users, MainController) {
 
         // Router com as várias páginas e respetivas funçoes listadas
         var Router = Backbone.Router.extend({
